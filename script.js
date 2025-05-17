@@ -33,7 +33,8 @@ function operate(num1,num2,operator){
     }
 }
 
-
+let num1Taken=false;
+let operatorTaken=false;
 const disp=document.querySelector(".display");
 
 function displayNum(){
@@ -47,9 +48,31 @@ btn.forEach(bt=>{
         else{
             disp.innerHTML+=bt.innerHTML;
         }
+        num1Taken=true;
 });
 })
 num1 =parseInt(disp.innerHTML);
+
+const op=document.querySelectorAll(".oper");
+op.forEach(op=>{
+op.addEventListener("click", function(){
+  if(num1Taken==true){
+    operator=op.innerHTML;
+    operatorTaken=true;
+  }
+})
+})
+
+btn.forEach(bt=>{
+    bt.addEventListener("click",btn=> {
+      if(operatorTaken==true){
+        
+        disp.innerHTML=8;
+  
+        
+      }
+});
+})
 }
 
 displayNum();
