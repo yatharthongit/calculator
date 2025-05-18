@@ -1,5 +1,5 @@
 function add(a,b){
-    return a+b;
+    return parseInt(a)+parseInt(b);
 }
 
 function sub(a,b){
@@ -14,22 +14,22 @@ function divide(a,b){
     return a/b;
 }
 
-let num1;
-let num2;
-let operator;
+let num1='';
+let num2='';
+let operator='';
 
 function operate(num1,num2,operator){
     if(operator=="+"){
-      add(num1,num2);  
+     return add(num1,num2);  
     }
     if(operator=="-"){
-      sub(num1,num2);  
+     return sub(num1,num2);  
     }
     if(operator=="*"){
-      multiply(num1,num2);  
+     return multiply(num1,num2);  
     }
     if(operator=="/"){
-      divide(num1,num2);  
+     return divide(num1,num2);  
     }
 }
 
@@ -49,9 +49,11 @@ btn.forEach(bt=>{
             disp.innerHTML+=bt.innerHTML;
         }
         num1Taken=true;
+      
 });
 })
-num1 =parseInt(disp.innerHTML);
+
+
 
 const op=document.querySelectorAll(".oper");
 op.forEach(op=>{
@@ -65,17 +67,34 @@ op.addEventListener("click", function(){
 
 btn.forEach(bt=>{
     bt.addEventListener("click",btn=> {
-      if(operatorTaken==true){
-        
-        disp.innerHTML=8;
-  
-        
+      if(operatorTaken==true){     
+        disp.innerHTML=bt.innerHTML;
+        operatorTaken=false;      
       }
+      if(operatorTaken=false){
+        disp.innerHTML+=bt.innerHTML;
+      }
+      
 });
 })
+
+
 }
 
 displayNum();
 
+let equals=document.querySelector(".eq");
+equals.addEventListener("click", function() {
+ 
+  console.log(num1);
+  console.log(num2);
+});
+
 let clr=document.querySelector(".clear");
-clr.addEventListener("click",clr=>disp.innerHTML=0);
+clr.addEventListener("click",function(){
+
+  disp.innerHTML=0;
+   num1='';
+   num2='';
+   operator='';
+});
